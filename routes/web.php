@@ -77,6 +77,39 @@ Route::post('/admin/delete-category', [
     'uses'=>'Admin\CategoryController@delete_category'
 ]);
 
+// Quản lí tác giả
+Route::get('/admin/list-author', [
+    'as'=>'list-author',
+    'uses'=>'Admin\AuthorController@list_author'
+]);
+Route::get('/admin/add-author', [
+    'as'=>'add-author',
+    'uses'=>'Admin\AuthorController@add_author'
+]);
+Route::post('/admin/save-author', [
+    'as'=>'save-author',
+    'uses'=>'Admin\AuthorController@save_author'
+]);
+//delete category
+
+Route::post('/admin/author-category', [
+    'as'=>'delete-author',
+    'uses'=>'Admin\AuthorController@delete_author'
+]);
+
+
+
+
+
+
+
+
+
+//account nguoi dung
+Route::get('/account', function () {
+    return view('pages/account');
+})->name('account') ;
+
 // gio hang
 Route::get('/shop-cart', function () {
     return view('pages/shop_cart');
@@ -88,3 +121,6 @@ Route::get('/list-book', function () {
 })->name('list-book') ;
 
 // chi tiet san pham
+Route::get('/detail-book', function () {
+    return view('pages/detail_book');
+})->name('detail-book') ;

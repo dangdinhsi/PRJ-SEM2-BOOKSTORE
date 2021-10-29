@@ -32,8 +32,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
-        ADMIN
+    <a href="{{route('admin-dashboard')}}" class="logo">
+        SixStore
     </a>
     <div class="sidebar-toggle-box">
         <div class="fa fa-bars"></div>
@@ -88,8 +88,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Danh mục sách</span>
                     </a>
                     <ul class="sub">
-						<li><a href="{{route('add-category')}}">Thêm danh mục</a></li>
-						<li><a href="{{route('list-category')}}">Liệt kê danh mục</a></li>
+                    	<li><a href="{{route('list-category')}}">Danh sách thể loại</a></li>
+						<li><a href="{{route('add-category')}}">Thêm thể loại</a></li>
+
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Tác giả</span>
+                    </a>
+                    <ul class="sub">
+                    	<li><a href="{{route('list-author')}}">Danh sách tác giả</a></li>
+						<li><a href="{{route('add-author')}}">Thêm tác giả</a></li>
                     </ul>
                 </li>
             </ul>            
