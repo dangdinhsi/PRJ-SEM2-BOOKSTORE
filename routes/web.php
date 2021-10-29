@@ -49,15 +49,34 @@ Route::get('/admin/list-category', [
     'as'=>'list-category',
     'uses'=>'Admin\CategoryController@list_category'
 ]);
+
+//add category
 Route::get('/admin/add-category', [
     'as'=>'add-category',
     'uses'=>'Admin\CategoryController@add_category'
 ]);
-
 Route::post('/admin/save-category', [
     'as'=>'save-category',
     'uses'=>'Admin\CategoryController@save_category'
 ]);
+//update category
+
+Route::get('/admin/edit-category', [
+    'as'=>'edit-category',
+    'uses'=>'Admin\CategoryController@edit_category'
+]);
+Route::post('/admin/update-category', [
+    'as'=>'update-category',
+    'uses'=>'Admin\CategoryController@update_category'
+]);
+
+//delete category
+
+Route::post('/admin/delete-category', [
+    'as'=>'delete-category',
+    'uses'=>'Admin\CategoryController@delete_category'
+]);
+
 // gio hang
 Route::get('/shop-cart', function () {
     return view('pages/shop_cart');

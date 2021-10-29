@@ -1,38 +1,18 @@
 @extends('admin_layout')
 @section('content')
+   {{ csrf_field() }}
 		<div class="table-agile-info">
             <div class="panel panel-default">
                  <div class="panel-heading">
                     Liệt kê danh mục
                 </div>
-           <!--  <div class="row w3-res-tb">
-            <div class="col-sm-5 m-b-xs">
-		        <select class="input-sm form-control w-sm inline v-middle">
-		          <option value="0">Bulk action</option>
-		          <option value="1">Delete selected</option>
-		          <option value="2">Bulk edit</option>
-		          <option value="3">Export</option>
-		        </select>
-		        <button class="btn btn-sm btn-default">Apply</button>                
-      </div>
-      <div class="col-sm-4">
-      </div>
-      <div class="col-sm-3">
-        <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
-          <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="button">Go!</button>
-          </span>
-        </div>
-      </div>
-    </div> -->
     <div class="table-responsive">
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
+            <th style="max-width: 150px;">
               <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
+               Mã Danh Mục
               </label>
             </th>
             <th>Tên</th>
@@ -45,17 +25,23 @@
         <tbody>
         	@foreach ($list as $item)
         	<tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+            <td>{{$item-> category_id}}</td>
             <td>{{$item-> category_name}}</td>
-            <td><span class="text-ellipsis">{{$item-> created_at}}</span></td>
+            <td><span class="text-ellipsis">{{$item-> updated_at}}</span></td>
             <td><span class="text-ellipsis">
-            	{{ $item-> category_status == 1 ?'Sẵn sàng':'Không hoạt động'}}
+              @php
+               if($item-> category_status == 0){
+                echo '<p style="color:red;">Ẩn</p>';
+              }else{
+                echo '<p style="color:green;">Hiển thị</p>';
+              }
+              @endphp
             </span></td>
             <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
+              <a href="{{route('edit-category')}}?category_id={{$item-> category_id}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
             </td>
             <td>
-            	<a href="" class="active" ui-toggle-class=""><i class="fa fa-trash-o text-danger text"></i></a>
+            	<a href="#" onclick="return deleteCategory({{$item-> category_id}});" class="active" ui-toggle-class=""><i class="fa fa-trash-o text-danger text"></i></a>
             </td>
           </tr>
         	@endforeach
@@ -78,4 +64,23 @@
     </footer>
   </div>
 </div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+  function deleteCategory(category_id){
+    var x = confirm("Bạn chắc chắn muốn xóa danh mục ?");
+    if(x){
+         $.post("{{route('delete-category')}}",
+         {
+          category_id: category_id,
+          '_token' : $('[name=_token]').val()
+          },function(data,status){
+              alert('Xóa thành công!!!');
+              location.href = '{{route('list-category')}}';
+              return true;
+          });
+          }else return false;
+  }
+</script>
 @endsection
