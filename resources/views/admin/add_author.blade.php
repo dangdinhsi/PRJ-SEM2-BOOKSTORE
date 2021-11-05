@@ -14,24 +14,22 @@
                             <div class="form-group">
                                 <label for="author_name">Tên tác giả</label>
                                 <input type="text" name="author_name" class="form-control" id="author_name" placeholder="Điền tên tác giả">
+                                <span style="color: red">@error('author_name'){{$message}}@enderror</span>
                             </div>
                             <div class="form-group">
                                 <label for="author_desc">Thông tin tác giả</label>
-                                <textarea style="resize: none;" rows="8" name="author_desc" class="form-control" id="author_desc" placeholder="Mô tả thông tin về tác giả" ></textarea> 
-                            </div>
-                            <div class="form-group">
-                                <input type="button" id="upload_widget" class="btn btn-primary" value="Ảnh đại diện" />
+                                <textarea style="resize: none;" rows="8" name="author_desc" class="form-control" id="author_desc" placeholder="Mô tả thông tin về tác giả" ></textarea>
                             </div>
                             <div class="form-group uploaded">
-                                <input type="hidden" id="images" class="form-control" />
+                                <input type="button" id="upload_widget" class="btn btn-primary" value="Ảnh đại diện" />
+                                <span style="color: red">@error('photo'){{$message}}@enderror</span>
                             </div>
                             <button type="submit" name="add_author_book" class="btn btn-info">Tạo tác giả</button>
                         </form>
                         </div>
-
                     </div>
                 </section>
-        </div>	
+        </div>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script>
@@ -67,6 +65,6 @@
         document.getElementById("upload_widget").addEventListener("click", function () {
             showUploadWidget();
         }, false);
-        
+
     </script>
 @endsection

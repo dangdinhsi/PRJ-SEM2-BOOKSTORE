@@ -29,7 +29,14 @@
             <td>{{$item-> author_id}}</td>
             <td>{{$item-> author_name}}</td>
             <td><span class="text-ellipsis">{{$item-> updated_at}}</span></td>
-            <td><img src="{{$item-> author_url}}" alt="author"></td>
+                <?php
+                $myCloudinaryDomain ='https://res.cloudinary.com/siddd00474/image/upload/c_limit,h_60/';
+                if(isset($item)){
+                    $arr = explode(";",$item->author_url);
+                }
+                $urlDefault = $myCloudinaryDomain.$arr[0].'.jpg';
+                echo '<td><img src="'.$urlDefault.'" alt=""></td>';
+                ?>
             <td><span class="text-ellipsis">
               @php
                if($item-> author_status == 0){
@@ -40,7 +47,7 @@
               @endphp
             </span></td>
             <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
+              <a href="{{route('edit-author',$item-> author_id)}}" class="active" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
             </td>
             <td>
             	<a href="#" onclick="return deleteAuthor({{$item-> author_id}});" class="active" ui-toggle-class=""><i class="fa fa-trash-o text-danger text"></i></a>
@@ -52,7 +59,7 @@
     </div>
     <footer class="panel-footer">
       <div class="row">
-        <div class="col-sm-12 text-right text-center-xs">                
+        <div class="col-sm-12 text-right text-center-xs">
           <ul class="pagination pagination-sm m-t-none m-b-none">
             <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
             <li><a href="">1</a></li>

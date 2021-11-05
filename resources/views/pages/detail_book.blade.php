@@ -83,11 +83,11 @@
                         </div>
                     </div>
                     <li class="nav-item giohang">
-                        <a href="shop-cart.html" class="btn btn-secondary rounded-circle">
+                        <a href="{{route('shop-cart')}}" class="btn btn-secondary rounded-circle">
                             <i class="fa fa-shopping-cart"></i>
                             <div class="cart-amount">0</div>
                         </a>
-                        <a class="nav-link text-dark giohang text-uppercase" href="shop-cart.html"
+                        <a class="nav-link text-dark giohang text-uppercase" href="{{ route('shop-cart') }}"
                             style="display:inline-block">Giỏ
                             Hàng</a>
                     </li>
@@ -698,7 +698,7 @@
                 <div class="khoisanpham" style="padding-bottom: 2rem;">
                     <!-- 1 sản phẩm -->
                     <div class="card">
-                        <a href="#" class="motsanpham" style="text-decoration: none; color: black;" data-toggle="tooltip"
+                        <a href="" class="motsanpham" style="text-decoration: none; color: black;" data-toggle="tooltip"
                             data-placement="bottom" title="Lập Kế Hoạch Kinh Doanh Hiệu Quả">
                             <img class="card-img-top anh" src="{{'front-end/images/lap-ke-hoach-kinh-doanh-hieu-qua.jpg'}}" alt="lap-ke-hoach-kinh-doanh-hieu-qua">
                             <div class="card-body noidungsp mt-3">

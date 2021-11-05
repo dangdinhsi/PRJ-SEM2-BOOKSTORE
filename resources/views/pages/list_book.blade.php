@@ -420,7 +420,7 @@
                     <div class="row">
                             <div class="col-lg-3 col-md-4 col-xs-6 item DeanGraziosi">
                                 <div class="card ">
-                                    <a href="#" class="motsanpham"
+                                    <a href="{{route('detail-book')}}" class="motsanpham"
                                         style="text-decoration: none; color: black;" data-toggle="tooltip"
                                         data-placement="bottom" title="Lập Kế Hoạch Kinh Doanh Hiệu Quả">
                                         <img class="card-img-top anh" src="{{('front-end/images/lap-ke-hoach-kinh-doanh-hieu-qua.jpg')}}"

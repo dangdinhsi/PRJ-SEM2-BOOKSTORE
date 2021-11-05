@@ -37,7 +37,6 @@ Route::get('/admin/logout', [
 Route::get('/', function () {
     return view('pages/home');
 });
-
 // home route2
 Route::get('/home', function () {
     return view('pages/home');
@@ -90,26 +89,36 @@ Route::post('/admin/save-author', [
     'as'=>'save-author',
     'uses'=>'Admin\AuthorController@save_author'
 ]);
-//delete category
-
+Route::get('/admin/edit-author/{author_id}', [
+    'as'=>'edit-author',
+    'uses'=>'Admin\AuthorController@edit_author'
+]);
+Route::post('/admin/update-category/{author_id}', [
+    'as'=>'update-author',
+    'uses'=>'Admin\AuthorController@update_author'
+]);
+//delete author
 Route::post('/admin/author-category', [
     'as'=>'delete-author',
     'uses'=>'Admin\AuthorController@delete_author'
 ]);
+//pulisher
+Route::get('/admin/list-publisher', [
+    'as'=>'list-publisher',
+    'uses'=>'Admin\PublisherController@list_publisher'
+]);
+//Sach
 
-
-
-
-
-
-
-
-
+Route::get('/admin/list-book','Admin\BookController@list_book')->name('admin.list_book');
+Route::get('/admin/create-book','Admin\BookController@create_book')->name('admin.create_book');
+Route::post('/admin/save-book','Admin\BookController@save_book')->name('admin.save_book');
+Route::get('/admin/edit-book/{id}','Admin\BookController@edit_book')->name('admin.edit_book');
+Route::post('/admin/update-book/{id}','Admin\BookController@update_book')->name('admin.update_book');
+//Account
 //account nguoi dung
 Route::get('/account', function () {
     return view('pages/account');
 })->name('account') ;
-
 // gio hang
 Route::get('/shop-cart', function () {
     return view('pages/shop_cart');
@@ -124,3 +133,10 @@ Route::get('/list-book', function () {
 Route::get('/detail-book', function () {
     return view('pages/detail_book');
 })->name('detail-book') ;
+// Phan client
+//sach theo danh muc
+Route::get('/books-by-category/{category_id}', 'Client\BookController@books_by_category')->name('books-by-category') ;
+// Route view home
+
+//sach theo danh muc
+Route::get('/', 'Client\BookController@home')->name('client-home');
